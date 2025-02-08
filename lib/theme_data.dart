@@ -39,10 +39,10 @@ final themeData = ThemeData(
       },
     ),
     headingRowColor: WidgetStateProperty.all(
-      Colors.white, // White header background
+      Colors.transparent,
     ),
     decoration: BoxDecoration(
-      color: const Color(0xFFFFF1F1), // Light pink background
+      color: Colors.transparent, // Light pink background
       borderRadius: BorderRadius.circular(8),
     ),
   ),

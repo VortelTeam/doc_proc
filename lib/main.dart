@@ -62,7 +62,7 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
             minExtendedWidth: 200,
             destinations: [
               NavigationRailDestination(
-                icon: Icon(Icons.list),
+                icon: Icon(Icons.people),
                 label: Text('Employees'),
               ),
             ],
