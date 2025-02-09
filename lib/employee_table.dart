@@ -57,23 +57,8 @@ class _EmployeeTableState extends State<EmployeeTable> {
         onPressed: () {
           showDialog(
             context: context,
-            builder: (_) => AlertDialog(
-              title: const Text('Upload Documents'),
-              content: const DocumentUploadForm(),
-              actions: [
-                ElevatedButton.icon(
-                  onPressed: () {
-                    // Handle parse and continue
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_forward),
-                  label: const Text('Parse and Continue'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFE8D1D1),
-                    foregroundColor: Colors.black,
-                  ),
-                ),
-              ],
+            builder: (context) => AlertDialog(
+              content: DocumentUploadForm(),
             ),
           );
         },
