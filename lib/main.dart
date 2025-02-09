@@ -1,6 +1,6 @@
 // main.dart
 import 'package:doc_proc/employee_table.dart';
-import 'package:doc_proc/screens.dart';
+import 'package:doc_proc/doc_section.dart';
 import 'package:doc_proc/theme_data.dart';
 import 'package:flutter/material.dart';
 

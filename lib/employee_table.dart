@@ -1,5 +1,7 @@
 ﻿import 'package:doc_proc/data/employee_repo.dart';
 import 'package:doc_proc/employee_details.dart';
+import 'package:doc_proc/doc_section.dart';
+import 'package:doc_proc/employee_doc_upload.dart';
 import 'package:flutter/material.dart';
 
 typedef Employee = ({String name, String title});
@@ -50,6 +52,33 @@ class _EmployeeTableState extends State<EmployeeTable> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (_) => AlertDialog(
+              title: const Text('Upload Documents'),
+              content: const DocumentUploadForm(),
+              actions: [
+                ElevatedButton.icon(
+                  onPressed: () {
+                    // Handle parse and continue
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.arrow_forward),
+                  label: const Text('Parse and Continue'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFE8D1D1),
+                    foregroundColor: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
       key: _scaffoldKey,
       body: Row(
         spacing: 16,
