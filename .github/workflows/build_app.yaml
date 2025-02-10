@@ -1,0 +1,28 @@
+﻿name: Flutter Web Build and Deploy
+
+on:
+  push:
+    branches: [ main ]  # Change this to your main branch name
+  workflow_dispatch:    # Allows manual triggering
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - run: flutter --version
+      - name: Install Dependencies
+        run: flutter pub get
+      - name: Build Web App
+        run: flutter build web --web-renderer html --release
+      - name: Modify Index HTML
+        run: |
+          # Navigate to the directory containing the index.html file
+          cd build/web
+          # Replace <base href="/"> with <base href="./">
+          sed -i 's/<base href="\/">/<base href=".\/">/' index.html
