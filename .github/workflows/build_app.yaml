@@ -2,7 +2,7 @@
 
 on:
   push:
-    branches: [ main ]  # Change this to your main branch name
+    branches: main
   workflow_dispatch:    # Allows manual triggering
 
 jobs:
@@ -22,7 +22,15 @@ jobs:
         run: flutter build web --web-renderer html --release
       - name: Modify Index HTML
         run: |
-          # Navigate to the directory containing the index.html file
           cd build/web
-          # Replace <base href="/"> with <base href="./">
           sed -i 's/<base href="\/">/<base href=".\/">/' index.html
+      
+      - name: Deploy Flutter build
+        run: |
+          git checkout -b gh-pages
+          cp -r ./build/web/* .
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Deploy Flutter web build"
+          git push -f origin gh-pages
